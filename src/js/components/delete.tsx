@@ -25,7 +25,6 @@ class Delete extends React.Component<any> {
 
   render() {
     return <div>
-      <p>Delete Book</p>
       <label htmlFor="id">
         <input id="id" value={this.state.bookId} onChange={this.changeHandler} placeholder="Enter bookId to delete" />
       </label>

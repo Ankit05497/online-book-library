@@ -3,6 +3,7 @@ import { Books, BookDetails } from '../types';
 import { connect } from 'react-redux';
 import { editBook } from '../store/action';
 import { store } from '../store/store';
+import styles from '../../styles/add.module.css';
 
 interface State {
   bookId: string; 
@@ -57,18 +58,22 @@ class EditPage extends React.Component<any> {
     this.setState({
       bookToEdit: bookToEdit,
     },() => {
-      this.setState({
-        book: {
-          id: bookToEdit[0].book.id,
-          name: bookToEdit[0].book.name,
-          authorName: bookToEdit[0].book.authorName,
-          bookDescription: bookToEdit[0].book.bookDescription,
-          bookGenre: bookToEdit[0].book.bookGenre,
-          price: bookToEdit[0].book.price,
-          reviews: bookToEdit[0].book.reviews
-        },
-        count: bookToEdit[0].count,
-      })
+      if(bookToEdit.length > 0) {
+        this.setState({
+          book: {
+            id: bookToEdit[0].book.id,
+            name: bookToEdit[0].book.name,
+            authorName: bookToEdit[0].book.authorName,
+            bookDescription: bookToEdit[0].book.bookDescription,
+            bookGenre: bookToEdit[0].book.bookGenre,
+            price: bookToEdit[0].book.price,
+            reviews: bookToEdit[0].book.reviews
+          },
+          count: bookToEdit[0].count,
+        })
+      } else {
+        window.alert('No books with this Id in Library');
+      }
     });
   }
 
@@ -80,6 +85,7 @@ class EditPage extends React.Component<any> {
     this.props.editBook(this.state.bookId, bookDetail);
     this.setState({
       bookToEdit: [],
+      bookId: '',
       book: {
         id: '',
         name: '',
@@ -103,30 +109,53 @@ class EditPage extends React.Component<any> {
     </button>
     {this.state.bookToEdit.length > 0 && <div>
       <p>Edit Book</p>
-      <label htmlFor="id">
-        <input id="id" value={this.state.bookId} onChange={this.changeHandler} readOnly disabled placeholder="Book Id" />
-      </label>
-      <label htmlFor="name">
-        <input id="name" value={this.state.book.name} onChange={this.changeHandler} placeholder="Book Name" />
-      </label>
-      <label htmlFor="authorName">
-        <input id="authorName" value={this.state.book.authorName} onChange={this.changeHandler} placeholder="Author Name" />
-      </label>
-      <label htmlFor="bookDescription">
-        <input id="bookDescription" value={this.state.book.bookDescription} onChange={this.changeHandler} placeholder="Description of Book" />
-      </label>
-      <label htmlFor="bookGenre">
-        <input id="bookGenre" value={this.state.book.bookGenre} onChange={this.changeHandler} placeholder="Book Genre" />
-      </label>
-      <label htmlFor="price">
-        <input id="price" value={this.state.book.price} onChange={this.changeHandler} placeholder="Price" />
-      </label>
-      <label htmlFor="numberOfBooks">
-        <input id="numberOfBooks" value={this.state.count} onChange={this.changeCountHandler} placeholder="Number of Books" />
-      </label>
-      <label htmlFor="submit">
-        <button id="submit" onClick={this.submitEditHandler}>Submit</button>
-      </label>
+      <div className={styles.field_container}>
+        <label htmlFor="id">
+          Book Id:
+          <input id="id" value={this.state.bookId} onChange={this.changeHandler} readOnly disabled placeholder="Book Id" />
+        </label>
+      </div>
+      <div className={styles.field_container}>
+        <label htmlFor="name">
+          Book Name:
+          <input id="name" value={this.state.book.name} onChange={this.changeHandler} placeholder="Book Name" />
+        </label>
+      </div>
+      <div className={styles.field_container}>
+        <label htmlFor="authorName">
+          Author Name:
+          <input id="authorName" value={this.state.book.authorName} onChange={this.changeHandler} placeholder="Author Name" />
+        </label>
+      </div>
+      <div className={styles.field_container}>
+        <label htmlFor="bookDescription">
+          Book Description:
+          <input id="bookDescription" value={this.state.book.bookDescription} onChange={this.changeHandler} placeholder="Description of Book" />
+        </label>
+      </div>
+      <div className={styles.field_container}>
+        <label htmlFor="bookGenre">
+          Book Genre:
+          <input id="bookGenre" value={this.state.book.bookGenre} onChange={this.changeHandler} placeholder="Book Genre" />
+        </label>
+      </div>
+      <div className={styles.field_container}>
+        <label htmlFor="price">
+          Price:
+          <input id="price" value={this.state.book.price} onChange={this.changeHandler} placeholder="Price" />
+        </label>
+      </div>
+      <div className={styles.field_container}>
+        <label htmlFor="numberOfBooks">
+          No. of Books:
+          <input id="numberOfBooks" value={this.state.count} onChange={this.changeCountHandler} placeholder="Number of Books" />
+        </label>
+      </div>
+      <div className={styles.button_container}>
+        <label htmlFor="submit">
+          <button id="submit" onClick={this.submitEditHandler}>Submit</button>
+        </label>
+      </div>
     </div>}
   </div>
   }

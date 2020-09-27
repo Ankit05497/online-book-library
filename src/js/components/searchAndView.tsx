@@ -52,7 +52,7 @@ class SearchAndView extends React.Component<any> {
     return <div>
       <h3 className={styles.all_books_heading}>All Books List</h3>
       {this.state.books.length === 0 &&
-        <p>
+        <p className={styles.no_books_container}>
           No books in library
         </p>
       }

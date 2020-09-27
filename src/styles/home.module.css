@@ -4,6 +4,10 @@
 .button_container {
   display: flex;
   justify-content: space-around;
+  padding: 1rem 0;
+  border: 1px solid black;
+  background: aliceblue;
+  border-radius: 5px;
 }
 .action_container {
   display: flex;

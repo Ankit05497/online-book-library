@@ -61,8 +61,14 @@ class Add extends React.Component<any> {
   render() {
     return <div>
       <div className={styles.field_container}>
-        <label htmlFor="name">
+        <label htmlFor="id">
           Book Id:
+        <input id="id" value={this.state.book.id} onChange={this.changeHandler} placeholder="Book Id" />
+        </label>
+      </div>
+      <div className={styles.field_container}>
+        <label htmlFor="name">
+          Book Name:
         <input id="name" value={this.state.book.name} onChange={this.changeHandler} placeholder="Book Name" />
         </label>
       </div>
