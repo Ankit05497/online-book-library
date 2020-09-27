@@ -1,0 +1,10 @@
+.field_container {
+  padding: 0.5rem 0;
+}
+.field_container input {
+  margin-left: 0.75rem;
+}
+.button_container {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,44 @@
+.all_books_heading {
+  text-align: center;
+}
+
+.flex_container {
+  display: flex;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.book_id {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.book_name {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.book_description {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.author_name {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.book_price {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}

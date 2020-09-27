@@ -1,6 +1,7 @@
 import React from 'react';
 import { Books, BookDetails } from '../types';
 import { store } from '../store/store';
+import styles from '../../styles/searchAndView.module.css';
 
 interface State {
   books: Books[];
@@ -13,20 +14,20 @@ interface ViewProps {
 
 const ViewData: React.FunctionComponent<ViewProps> = (props) => {
   const { data } = props;
-  return <div>
-    <div>
+  return <div className={styles.flex_container}>
+    <div className={styles.book_id}>
       {data.id}
     </div>
-    <div>
+    <div className={styles.book_name}>
       {data.name}
     </div>
-    <div>
+    <div className={styles.book_description}>
       {data.bookDescription}
     </div>
-    <div>
+    <div className={styles.author_name}>
       {data.authorName}
     </div>
-    <div>
+    <div className={styles.book_price}>
       {data.price}
     </div>
   </div>
@@ -48,8 +49,8 @@ class SearchAndView extends React.Component<any> {
   }
 
   render() {
-    console.log(this.state.books);
     return <div>
+      <h3 className={styles.all_books_heading}>All Books List</h3>
       {this.state.books.length === 0 &&
         <p>
           No books in library
@@ -57,6 +58,23 @@ class SearchAndView extends React.Component<any> {
       }
       {this.state.books.length > 0 &&
         <>
+        <div className={styles.flex_container}>
+          <div className={styles.book_id}>
+            Book Id
+          </div>
+          <div className={styles.book_name}>
+            Book Name
+          </div>
+          <div className={styles.book_description}>
+            Book Description
+          </div>
+          <div className={styles.author_name}>
+            AuthorName
+          </div>
+          <div className={styles.book_price}>
+            Price (Rs)
+          </div>
+        </div>
         {this.state.books.map((book) => {
           return <ViewData data={book.book} key={book.book.id} />
         })}
